@@ -1,5 +1,5 @@
 import bcrypt from "bcryptjs";
-import { ObjectId } from 'mongodb';
+import { ObjectId } from "mongodb";
 
 const SALT_ROUNDS = 10;
 class UserDataSource {
@@ -13,7 +13,6 @@ class UserDataSource {
   }
 
   async getUserByEmail(email) {
-    console.log("I am running");
     return this.collection.findOne({ email });
   }
 

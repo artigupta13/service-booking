@@ -22,8 +22,12 @@ class ServiceDataSource {
     }
   }
 
-  async getAll() {
-    const services = await this.collection.find().toArray();
+  async getAll(filter, skip, limit) {
+    const services = await this.collection
+      .find(filter)
+      .skip(skip)
+      .limit(Number(limit))
+      .toArray();
     return services;
   }
 
@@ -38,6 +42,16 @@ class ServiceDataSource {
     technician = capitalizeWords(technician);
     duration = capitalizeWords(duration);
     price = parseFloat(price);
+
+    if (
+      name === "" ||
+      description === "" ||
+      technician === "" ||
+      duration === "" ||
+      price === NaN
+    ) {
+      throw new Error("Invalid data");
+    }
 
     const result = await this.collection.updateOne(
       { name, technician },

@@ -6,7 +6,23 @@ const router = Router();
 router.get("/", async (req, res) => {
   try {
     const { serviceDataSource } = req.dataSources;
-    const services = await serviceDataSource.getAll();
+    // Get query parameters
+    const { name, technician, page = 1, limit = 10 } = req.query;
+    let filter = {};
+
+    // Add filter conditions if query parameters are provided
+    if (name) {
+      filter.name = name;
+    }
+    if (technician) {
+      filter.technician = technician;
+    }
+
+    // Calculate the number of documents to skip
+    const skip = (page - 1) * limit;
+
+    const services = await serviceDataSource.getAll(filter, skip, limit);
+
     res.json(services);
   } catch (error) {
     res.status(500).send(error.message);

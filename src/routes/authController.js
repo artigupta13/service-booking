@@ -7,7 +7,6 @@ const router = Router();
 
 router.post("/register", async (req, res) => {
   const { username, email, password, role } = req.body;
-  console.log(username, email, password, role);
   const { userDataSource } = req.dataSources;
   const isEmail = validator.isEmail(email);
   if (!isEmail) {
@@ -29,11 +28,9 @@ router.post("/register", async (req, res) => {
 
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
-  console.log(email, password);
   const { userDataSource } = req.dataSources;
 
   const user = await userDataSource.getUserByEmail(email);
-  console.log("User", user);
   if (!user) {
     return res.status(404).json({ error: "Invalid email or password" });
   }

@@ -63,11 +63,9 @@ This is a Node.js application for managing services and bookings.
 This application is built with Express.js for the server framework and MongoDB for the database. Here are some of the key libraries used:
 
 - **bcryptjs**: For password hashing.
-- **cookie-parser**: For parsing cookies.
-- **csurf**: For CSRF protection.
 - **dotenv**: For loading environment variables.
 - **express**: For building the RESTful API.
 - **helmet**: For setting HTTP headers for security.
 - **jsonwebtoken**: For JWT-based authentication.
 - **mongodb**: For interacting with MongoDB database.
-- **validator**: For data validation.
+

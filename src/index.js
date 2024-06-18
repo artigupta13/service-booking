@@ -42,7 +42,7 @@ app.use(async (req, res, next) => {
 
 // auth router
 // pass the csrfToken to the view
-app.use("/", authRoutes);
+app.use("/auth", authRoutes);
 
 app.use("/api", authenticate);
 

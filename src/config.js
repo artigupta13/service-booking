@@ -6,7 +6,7 @@ dotenv.config();
 // Export the configuration object
 export const config = {
     dbURI: process.env.DB_URI || 'mongodb://localhost:27017/',
-    dbName: process.env.DB_NAME || 'serviceBooking',
+    dbName: process.env.DB_NAME || 'service-booking',
     port: process.env.PORT || 8000,
     jwtSecret: process.env.JWT_SECRET || 'service-booking'
 };
